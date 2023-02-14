@@ -6,7 +6,7 @@ export function Header() {
   return (
     <div className="header">
       <Navbar bg="light" variant="light" fixed="top">
-        <Container fluid style={{ width: '70%' }}>
+        <Container fluid style={{ width: '80%' }}>
           <Navbar.Brand href="#home" style={{ fontSize: '18px' }}>
             <img
               alt=""
