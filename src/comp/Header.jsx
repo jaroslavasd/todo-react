@@ -15,7 +15,7 @@ export function Header() {
               height="30"
               className="d-inline-block align-top"
             />{' '}
-            TODO React App
+            TODO Awesome React App
           </Navbar.Brand>
         </Container>
       </Navbar>
