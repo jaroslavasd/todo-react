@@ -1,59 +1,58 @@
 import React from 'react';
-import Form from 'react-bootstrap/Form';
-import Alert from 'react-bootstrap/Alert';
-import Button from 'react-bootstrap/Button';
-import Stack from 'react-bootstrap/Stack';
+
+import { Box, Button, TextField, Alert, Grid } from '@mui/material';
 
 export function UsernameForm() {
-  const UsernameForm = () => {
-    const [username, setUsername] = React.useState('');
-    const [displayName, setDisplayName] = React.useState('');
-    const isLowerCase = username === username.toLowerCase();
-    const error = isLowerCase ? null : 'Username must be lower case';
+  const [username, setUsername] = React.useState('');
+  const [displayName, setDisplayName] = React.useState('');
+  const isLowerCase = username === username.toLowerCase();
+  const error = isLowerCase ? null : 'Username must be lower case';
 
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      setDisplayName(username);
-    };
-
-    const handleChange = (event) => {
-      setDisplayName('');
-      setUsername(event.target.value);
-    };
-
-    return (
-      <div className="username-form">
-        <Form onSubmit={handleSubmit}>
-          <Stack direction="horizontal" gap={3}>
-            <Button
-              className="ms-auto"
-              variant="primary"
-              disabled={Boolean(error)}
-              type="submit"
-            >
-              Submit
-            </Button>
-            <Form.Control
-              placeholder="Your name"
-              type="text"
-              onChange={handleChange}
-            />
-          </Stack>
-
-          {!Boolean(error) || (
-            <Alert className="mt-3" variant="danger">
-              {error}
-            </Alert>
-          )}
-          {!Boolean(displayName) || (
-            <Alert className="mt-3" variant="primary">
-              Hello {displayName}
-            </Alert>
-          )}
-        </Form>
-      </div>
-    );
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setDisplayName(username);
   };
 
-  return <UsernameForm />;
+  const handleChange = (event) => {
+    setDisplayName('');
+    setUsername(event.target.value);
+  };
+
+  return (
+    <>
+      <Box
+        component="form"
+        onSubmit={handleSubmit}
+        sx={{ textAlign: 'center', m: 2 }}
+      >
+        <Grid container direction="row" justifyContent="center">
+          <Grid item xs="auto">
+            <Button
+              style={{ fontWeight: 100 }}
+              color="success"
+              type="submit"
+              variant="contained"
+              disabled={Boolean(error)}
+              sx={{ mr: 1 }}
+            >
+              Success
+            </Button>
+          </Grid>
+          <Grid item xs={8}>
+            <TextField
+              fullWidth
+              placeholder="Your name"
+              size="small"
+              onChange={handleChange}
+            />
+          </Grid>
+        </Grid>
+      </Box>
+      {!Boolean(error) || <Alert severity="error">{error}</Alert>}
+
+      {!Boolean(displayName) || (
+        <Alert severity="info">Hello {displayName}</Alert>
+      )}
+    </>
+  );
 }
