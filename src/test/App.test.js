@@ -5,7 +5,7 @@ import App from '../App';
 test('renders "TODO React App"', () => {
   render(<App />);
   
-  const appHeader = 'TODO React App'
+  const appHeader = 'TODO Awesome React App'
   expect(screen.getByText(appHeader).textContent).toContain(appHeader);
   expect(screen.getByText(appHeader)).toHaveTextContent(appHeader);
 })
