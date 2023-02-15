@@ -1,4 +1,3 @@
-import qrcode from '../img/qrcode.png';
 import { Grid, Typography } from '@mui/material';
 
 export function Footer() {
@@ -10,7 +9,7 @@ export function Footer() {
       <Grid item xs={12}>
         <img
           alt=""
-          src={qrcode}
+          src="img/qrcode.png"
           width="150em"
           height="150em"
           className="d-inline-block align-center"

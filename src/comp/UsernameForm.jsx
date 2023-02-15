@@ -35,7 +35,7 @@ export function UsernameForm() {
               disabled={Boolean(error)}
               sx={{ mr: 1 }}
             >
-              Success
+              Submit
             </Button>
           </Grid>
           <Grid item xs={8}>
