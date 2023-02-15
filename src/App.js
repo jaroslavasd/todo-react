@@ -1,4 +1,3 @@
-import './css/App.css';
 import { UsernameForm } from './comp/UsernameForm';
 import { Header } from './comp/Header';
 import { Footer } from './comp/Footer';

@@ -1,24 +1,26 @@
-import logo from '../img/logo192.png';
-import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
+import { createTheme } from '@mui/material/styles';
+
+import { AppBar, Typography, Toolbar, Avatar } from '@mui/material';
+import { grey } from '@mui/material/colors';
+
+const theme = createTheme({
+  palette: {
+    mode: 'light',
+    primary: {
+      main: grey[100]
+    }
+  }
+});
 
 export function Header() {
   return (
-    <div className="header">
-      <Navbar bg="light" variant="light" fixed="top">
-        <Container fluid style={{ width: '80%' }}>
-          <Navbar.Brand href="#home" style={{ fontSize: '18px' }}>
-            <img
-              alt=""
-              src={logo}
-              width="30px"
-              height="30px"
-              className="d-inline-block align-center"
-            />{' '}
-            TODO Awesome React App
-          </Navbar.Brand>
-        </Container>
-      </Navbar>
-    </div>
+    <AppBar position="static" theme={theme}>
+      <Toolbar>
+        <Avatar alt="logo" src="img/logo192.png" variant="square" />
+        <Typography component="div" sx={{ p: 2 }}>
+          TODO Awesome React App
+        </Typography>
+      </Toolbar>
+    </AppBar>
   );
 }

@@ -1,59 +1,58 @@
 import React from 'react';
-import Form from 'react-bootstrap/Form';
-import Alert from 'react-bootstrap/Alert';
-import Button from 'react-bootstrap/Button';
-import Stack from 'react-bootstrap/Stack';
+
+import { Box, Button, TextField, Alert, Grid } from '@mui/material';
 
 export function UsernameForm() {
-  const UsernameForm = () => {
-    const [username, setUsername] = React.useState('');
-    const [displayName, setDisplayName] = React.useState('');
-    const isLowerCase = username === username.toLowerCase();
-    const error = isLowerCase ? null : 'Username must be lower case';
+  const [username, setUsername] = React.useState('');
+  const [displayName, setDisplayName] = React.useState('');
+  const isLowerCase = username === username.toLowerCase();
+  const error = isLowerCase ? null : 'Username must be lower case';
 
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      setDisplayName(username);
-    };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setDisplayName(username);
+  };
 
-    const handleChange = (event) => {
-      setDisplayName('');
-      setUsername(event.target.value);
-    };
+  const handleChange = (event) => {
+    setDisplayName('');
+    setUsername(event.target.value);
+  };
 
-    return (
-      <div className="username-form">
-        <Form onSubmit={handleSubmit}>
-          <Stack direction="horizontal" gap={3}>
+  return (
+    <>
+      <Box
+        component="form"
+        onSubmit={handleSubmit}
+        sx={{ textAlign: 'center', m: 2 }}
+      >
+        <Grid container direction="row" justifyContent="center">
+          <Grid item xs="auto">
             <Button
-              className="ms-auto"
-              variant="primary"
-              disabled={Boolean(error)}
+              style={{ fontWeight: 100 }}
+              color="success"
               type="submit"
+              variant="contained"
+              disabled={Boolean(error)}
+              sx={{ mr: 1 }}
             >
               Submit
             </Button>
-            <Form.Control
+          </Grid>
+          <Grid item xs={8}>
+            <TextField
+              fullWidth
               placeholder="Your name"
-              type="text"
+              size="small"
               onChange={handleChange}
             />
-          </Stack>
+          </Grid>
+        </Grid>
+      </Box>
+      {!Boolean(error) || <Alert severity="error">{error}</Alert>}
 
-          {!Boolean(error) || (
-            <Alert className="mt-3" variant="danger">
-              {error}
-            </Alert>
-          )}
-          {!Boolean(displayName) || (
-            <Alert className="mt-3" variant="primary">
-              Hello {displayName}
-            </Alert>
-          )}
-        </Form>
-      </div>
-    );
-  };
-
-  return <UsernameForm />;
+      {!Boolean(displayName) || (
+        <Alert severity="info">Hello {displayName}</Alert>
+      )}
+    </>
+  );
 }
